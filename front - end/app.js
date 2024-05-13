@@ -54,36 +54,12 @@ function initIndexPage() {
 
 // Initializes the match by sending the match initialization data to the server
 function initializeMatch(data, callback) {
-  fetch("http://localhost:8080/api/matches", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((match) => {
-      console.log("Match initialized");
-      callback(match);
-    })
-    .catch((error) => console.error("Error initializing match:", error));
+  //Implement...
 }
 
 // Fetches and displays previous match data from the server
 function fetchPreviousMatches() {
-  fetch("http://localhost:8080/api/matches")
-    .then((response) => response.json())
-    .then((previousMatches) => {
-      const matchesList = document.getElementById("matches-list");
-      matchesList.innerHTML = ""; // Clear existing list items if any
-      previousMatches.forEach((match) => {
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `<strong>${match.teamHomeName} vs ${match.teamAwayName}</strong> - Score: ${match.teamHomeGoals} - ${match.teamAwayGoals}<br>
-                              Yellow Cards: ${match.teamHomeYCards} - ${match.teamAwayYCards}, Fouls: ${match.teamHomeFouls} - ${match.teamAwayFouls}`;
-        matchesList.appendChild(listItem);
-      });
-    })
-    .catch((error) => console.error("Error fetching previous matches:", error));
+  //Implement...
 }
 
 // Initialize the match page by setting up match controls and loading team information
@@ -117,63 +93,12 @@ function setupMatchControls() {
     }
   });
 
-  endButton.addEventListener("click", () => {
-    if (confirm("Are you sure you want to end the match?")) {
-      if (matchTimer) {
-        clearInterval(matchTimer);
-        matchTimer = null;
-      }
-
-      const matchId = localStorage.getItem("matchId");
-      const matchData = {
-        team1: {
-          name: document.getElementById("team1-name").textContent,
-          goals: parseInt(document.getElementById("team1-goals").textContent),
-          yellowCards: parseInt(document.getElementById("team1-yellow-cards").textContent),
-          fouls: parseInt(document.getElementById("team1-fouls").textContent),
-        },
-        team2: {
-          name: document.getElementById("team2-name").textContent,
-          goals: parseInt(document.getElementById("team2-goals").textContent),
-          yellowCards: parseInt(document.getElementById("team2-yellow-cards").textContent),
-          fouls: parseInt(document.getElementById("team2-fouls").textContent),
-        },
-        matchDuration: formatTime(matchSeconds),
-      };
-
-      const updatedMatchData = {
-        teamHomeGoals: matchData.team1.goals,
-        teamHomeYCards: matchData.team1.yellowCards,
-        teamHomeFouls: matchData.team1.fouls,
-        teamAwayGoals: matchData.team2.goals,
-        teamAwayYCards: matchData.team2.yellowCards,
-        teamAwayFouls: matchData.team2.fouls,
-      };
-
-      updateMatch(matchId, updatedMatchData, () => {
-        console.log("Match data updated");
-        localStorage.removeItem("matchId");
-        window.location.href = "index.html";
-      });
-    }
-  });
+  //Implement endButton listener...
 }
 
 // Updates the match by sending the match data to the server
 function updateMatch(id, data, callback) {
-  fetch(`http://localhost:8080/api/matches/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((match) => {
-      console.log("Match updated");
-      callback(match);
-    })
-    .catch((error) => console.error("Error updating match:", error));
+  //Implement...
 }
 
 // Load team information from localStorage and sets up button controls
@@ -193,14 +118,14 @@ function loadTeamInfo() {
   });
 }
 
+// -------------- Utils --------------
+
 // Increment the specified statistic for the given team
 function incrementStat(team, stat) {
   const statCountElement = document.getElementById(`${team}-${stat}`);
   let currentCount = parseInt(statCountElement.textContent, 10);
   statCountElement.textContent = ++currentCount;
 }
-
-// Utils
 
 // Formats the given time in seconds to a MM:SS string
 function formatTime(seconds) {
