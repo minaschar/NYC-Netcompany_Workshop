@@ -136,8 +136,17 @@ function setupMatchControls() {
         },
         matchDuration: formatTime(matchSeconds),
       };
+	  
+	  const updatedMatchData = {
+		teamHomeGoals: matchData.team1.goals,
+		teamHomeYCards: matchData.team1.yellowCards,
+		teamHomeFouls: matchData.team1.fouls,
+		teamAwayGoals: matchData.team2.goals,
+		teamAwayYCards: matchData.team2.yellowCards,
+		teamAwayFouls: matchData.team2.fouls
+	  }
 
-      updateMatch(matchId, matchData, () => {
+      updateMatch(matchId, updatedMatchData, () => {
         console.log("Match data updated");
         localStorage.removeItem("matchId");
         window.location.href = "index.html";
