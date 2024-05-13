@@ -24,16 +24,16 @@ function initIndexPage() {
       const team1LogoFile = document.getElementById("team1-logo").files[0];
       const team2LogoFile = document.getElementById("team2-logo").files[0];
 
-      readImage(team1LogoFile, (team1LogoUrl) => {
-        readImage(team2LogoFile, (team2LogoUrl) => {
+      readImage(team1LogoFile, (team1LogoUrl, team1LogoName) => {
+        readImage(team2LogoFile, (team2LogoUrl, team2LogoName) => {
           const matchInitializationData = {
             teamHomeName: team1Name,
-            teamHomeLogo: team1LogoUrl,
+            teamHomeLogo: team1LogoName,
             teamHomeGoals: 0,
             teamHomeYCards: 0,
             teamHomeFouls: 0,
             teamAwayName: team2Name,
-            teamAwayLogo: team2LogoUrl,
+            teamAwayLogo: team2LogoName,
             teamAwayGoals: 0,
             teamAwayYCards: 0,
             teamAwayFouls: 0,
@@ -213,7 +213,7 @@ function formatTime(seconds) {
 function readImage(file, callback) {
   const reader = new FileReader();
   reader.onload = function (e) {
-    callback(e.target.result);
+    callback(e.target.result, file?.name);
   };
   reader.readAsDataURL(file);
 }
