@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Εξυπηρετητής: 127.0.0.1
--- Χρόνος δημιουργίας: 08 Μάη 2024 στις 12:56:07
+-- Χρόνος δημιουργίας: 13 Μάη 2024 στις 22:41:49
 -- Έκδοση διακομιστή: 10.4.20-MariaDB
 -- Έκδοση PHP: 8.0.8
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `football_match` (
   `id` bigint(20) NOT NULL,
-  `date` datetime DEFAULT NULL,
+  `date` datetime NOT NULL,
   `team_away_fouls` int(11) DEFAULT NULL,
   `team_away_goals` int(11) DEFAULT NULL,
   `team_away_logo` varchar(255) DEFAULT NULL,

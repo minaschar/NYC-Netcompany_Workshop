@@ -1,6 +1,9 @@
 package org.nyc.Entities;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.util.Date;
 
 @Entity
@@ -62,7 +65,9 @@ public class MatchEntity {
     @Column(name = "team_away_fouls")
     private int teamAwayFouls = 0;
 
-    @Column(name = "date")
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date", nullable = false, updatable = false)
     private Date date;
 
 	public Long getId() {
