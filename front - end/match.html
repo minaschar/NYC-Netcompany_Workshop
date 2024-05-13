@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <title>Live Match Tracking</title>
+  </head>
+  <body data-page-type="match">
+    <header>
+      <!-- Another way to add CSS -->
+      <h1 style="color: white">Live Match Tracking</h1>
+    </header>
+
+    <div class="container">
+      <div class="timer-container">
+        <div id="timer-display">00:00</div>
+        <button id="start-button"><i class="fa-solid fa-play"></i></button>
+        <button id="pause-button"><i class="fa-solid fa-pause"></i></button>
+        <button id="end-button"><i class="fa-solid fa-stop"></i></button>
+      </div>
+
+      <section id="team1-stats" class="team-stats">
+        <img id="team1-logo" src="" alt="Team 1 Logo" />
+        <h2 id="team1-name">Team 1</h2>
+        <div>
+          <h3 class="goals-h3">Goals: <span id="team1-goals">0</span></h3>
+        </div>
+        <button class="control-button" data-team="team1" data-stat="goals"><i class="fas fa-futbol"></i> Add Goal</button>
+        <div>Yellow Cards: <span id="team1-yellow-cards">0</span></div>
+        <button class="control-button" data-team="team1" data-stat="yellow-cards"><i class="fas fa-square" style="color: yellow"> </i> Add Yellow Card</button>
+        <!-- <div>Red Cards: <span id="team1-red-cards">0</span></div>
+        <button class="control-button" data-team="team1" data-stat="red-cards"><i class="fas fa-square" style="color: red"></i> Add Red Card</button> -->
+        <div>Fouls: <span id="team1-fouls">0</span></div>
+        <button class="control-button" data-team="team1" data-stat="fouls"><i class="fa-solid fa-circle-exclamation"></i> Add Foul</button>
+        <!-- <div>Corners: <span id="team1-corners">0</span></div>
+        <button class="control-button" data-team="team1" data-stat="corners"><i class="fa-solid fa-l"></i> Add Corner</button> -->
+        <!-- Add more statistics buttons similarly for each stat -->
+      </section>
+
+      <section id="team2-stats" class="team-stats">
+        <img id="team2-logo" src="" alt="Team 2 Logo" />
+        <h2 id="team2-name">Team 2</h2>
+        <h3 class="goals-h3">Goals: <span id="team2-goals">0</span></h3>
+        <button class="control-button" data-team="team2" data-stat="goals"><i class="fas fa-futbol"></i> Add Goal</button>
+        <div>Yellow Cards: <span id="team2-yellow-cards">0</span></div>
+        <button class="control-button" data-team="team2" data-stat="yellow-cards"><i class="fas fa-square" style="color: yellow"></i> Add Yellow Card</button>
+        <!-- <div>Red Cards: <span id="team2-red-cards">0</span></div>
+        <button class="control-button" data-team="team2" data-stat="red-cards"><i class="fas fa-square" style="color: red"></i> Add Red Card</button> -->
+        <div>Fouls: <span id="team2-fouls">0</span></div>
+        <button class="control-button" data-team="team2" data-stat="fouls"><i class="fa-solid fa-circle-exclamation"></i> Add Foul</button>
+        <!-- <div>Corners: <span id="team2-corners">0</span></div>
+        <button class="control-button" data-team="team2" data-stat="corners"><i class="fa-solid fa-l"></i> Add Corner</button> -->
+        <!-- Add more statistics buttons similarly for each stat -->
+      </section>
+    </div>
+
+    <footer>
+      <p>© 2024 Football Match Tracker</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

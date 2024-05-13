@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Football Match Tracker</title>
+  </head>
+  <body data-page-type="index">
+    <header>
+      <h1 style="color: white">Football Match Tracker</h1>
+    </header>
+
+    <div class="container">
+      <section id="team-registration">
+        <h2>Register Match</h2>
+        <form id="register-form">
+          <div>
+            <label for="team1-name">Team 1 Name:</label>
+            <input type="text" id="team1-name" required />
+            <input type="file" id="team1-logo" accept="image/*" required />
+          </div>
+          <div>
+            <label for="team2-name">Team 2 Name:</label>
+            <input type="text" id="team2-name" required />
+            <input type="file" id="team2-logo" accept="image/*" required />
+          </div>
+          <button class="start-button" type="submit">Start Match</button>
+        </form>
+      </section>
+    </div>
+    <div class="container">
+      <section id="previous-matches">
+        <h2>Previous Matches</h2>
+        <ul id="matches-list"></ul>
+      </section>
+    </div>
+
+    <footer>
+      <p>© 2024 Football Match Tracker</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
