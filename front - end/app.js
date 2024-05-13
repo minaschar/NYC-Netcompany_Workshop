@@ -21,27 +21,31 @@ function initIndexPage() {
       event.preventDefault();
       const team1Name = document.getElementById("team1-name").value;
       const team2Name = document.getElementById("team2-name").value;
-      const team1LogoUrl = document.getElementById("team1-logo").value; // Assuming input type is text for URL
-      const team2LogoUrl = document.getElementById("team2-logo").value; // Assuming input type is text for URL
+      const team1LogoFile = document.getElementById("team1-logo").files[0];
+      const team2LogoFile = document.getElementById("team2-logo").files[0];
 
-      const matchInitializationData = {
-        teamHomeName: team1Name,
-        teamHomeLogo: team1LogoUrl,
-        teamHomeGoals: 0,
-        teamHomeYCards: 0,
-        teamHomeFouls: 0,
-        teamAwayName: team2Name,
-        teamAwayLogo: team2LogoUrl,
-        teamAwayGoals: 0,
-        teamAwayYCards: 0,
-        teamAwayFouls: 0,
-      };
+      readImage(team1LogoFile, (team1LogoUrl) => {
+        readImage(team2LogoFile, (team2LogoUrl) => {
+          const matchInitializationData = {
+            teamHomeName: team1Name,
+            teamHomeLogo: team1LogoUrl,
+            teamHomeGoals: 0,
+            teamHomeYCards: 0,
+            teamHomeFouls: 0,
+            teamAwayName: team2Name,
+            teamAwayLogo: team2LogoUrl,
+            teamAwayGoals: 0,
+            teamAwayYCards: 0,
+            teamAwayFouls: 0,
+          };
 
-      initializeMatch(matchInitializationData, (match) => {
-        localStorage.setItem("matchId", match.id);
-        localStorage.setItem("team1", JSON.stringify({ name: team1Name, logo: team1LogoUrl }));
-        localStorage.setItem("team2", JSON.stringify({ name: team2Name, logo: team2LogoUrl }));
-        window.location.href = "match.html";
+          initializeMatch(matchInitializationData, (match) => {
+            localStorage.setItem("matchId", match.id);
+            localStorage.setItem("team1", JSON.stringify({ name: team1Name, logo: team1LogoUrl }));
+            localStorage.setItem("team2", JSON.stringify({ name: team2Name, logo: team2LogoUrl }));
+            window.location.href = "match.html";
+          });
+        });
       });
     });
   }
@@ -136,15 +140,15 @@ function setupMatchControls() {
         },
         matchDuration: formatTime(matchSeconds),
       };
-	  
-	  const updatedMatchData = {
-		teamHomeGoals: matchData.team1.goals,
-		teamHomeYCards: matchData.team1.yellowCards,
-		teamHomeFouls: matchData.team1.fouls,
-		teamAwayGoals: matchData.team2.goals,
-		teamAwayYCards: matchData.team2.yellowCards,
-		teamAwayFouls: matchData.team2.fouls
-	  }
+
+      const updatedMatchData = {
+        teamHomeGoals: matchData.team1.goals,
+        teamHomeYCards: matchData.team1.yellowCards,
+        teamHomeFouls: matchData.team1.fouls,
+        teamAwayGoals: matchData.team2.goals,
+        teamAwayYCards: matchData.team2.yellowCards,
+        teamAwayFouls: matchData.team2.fouls,
+      };
 
       updateMatch(matchId, updatedMatchData, () => {
         console.log("Match data updated");
