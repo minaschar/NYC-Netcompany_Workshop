@@ -1,0 +1,26 @@
+POST: localhost:8080/api/matches
+
+{
+    "teamHomeName": "FC Home",
+    "teamHomeLogo": "https://example.com/home-logo.png",
+    "teamHomeGoals": 0,
+    "teamHomeYCards": 0,
+    "teamHomeFouls": 0,
+    "teamAwayName": "FC Away",
+    "teamAwayLogo": "https://example.com/away-logo.png",
+    "teamAwayGoals": 0,
+    "teamAwayYCards": 0,
+    "teamAwayFouls": 0
+}
+
+
+PUT: localhost:8080/api/matches/1
+
+{
+    "teamHomeGoals": 10,
+    "teamHomeYCards": 20,
+    "teamHomeFouls": 30,
+    "teamAwayGoals": 40,
+    "teamAwayYCards": 50,
+    "teamAwayFouls": 60
+}
